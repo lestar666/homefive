@@ -25,12 +25,12 @@ int main()
 
 	for (int i = 1; i < nComp; i++)
 	{
-		Rect bbx;
-		bbx.x = statsMat.at<int>(i, 0);
-		bbx.y = statsMat.at<int>(i, 1);
-		bbx.width = statsMat.at<int>(i, 2);
-		bbx.height = statsMat.at<int>(i, 3);
-		rectangle(binaryMat, bbx, CV_RGB(255, 255, 255), 1, 8, 0);
+		Rect bndbox;
+		bndbox.x = statsMat.at<int>(i, 0);
+		bndbox.y = statsMat.at<int>(i, 1);
+		bndbox.width = statsMat.at<int>(i, 2);
+		bndbox.height = statsMat.at<int>(i, 3);
+		rectangle(binaryMat, bndbox, CV_RGB(255, 255, 255), 1, 8, 0);
 	}
 
 	imshow("binaryMat", binaryMat);
