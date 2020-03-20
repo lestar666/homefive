@@ -7,20 +7,24 @@ using namespace cv;
 
 int main()
 {
-	cv::Mat srcMat = imread("coin.png");
+	Mat srcMat = imread("coin.png",0);
 	cv::Mat binaryMat;
 	cv::threshold(srcMat, binaryMat, 0, 255, THRESH_OTSU);
 
 	Mat elementSizel = getStructuringElement(MORPH_ELLIPSE, Size(9, 11));
 	Mat out;
+	Mat oout;
+	Mat om;
+	Mat cm;
 	dilate(binaryMat, out, elementSizel);
 	imshow("pengzhang", out);
-	erode(binaryMat, out, elementSizel);
+	erode(binaryMat, oout, elementSizel);
 	imshow("fushi", out);
-	morphologyEx(binaryMat, binaryMat, MORPH_OPEN, elementSizel);
+	morphologyEx(binaryMat, om, MORPH_OPEN, elementSizel);
 	imshow("binaryMat", binaryMat);
-	morphologyEx(binaryMat, binaryMat, MORPH_CLOSE, elementSizel);
+	morphologyEx(binaryMat, cm, MORPH_CLOSE, elementSizel);
 	imshow("binaryMat", binaryMat);
+	waitKey(0);
 	return 0;
 
 }
